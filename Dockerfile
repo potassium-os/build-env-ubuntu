@@ -53,7 +53,8 @@ RUN set -exu \
     sudo \
     iproute2 \
     dnsutils \
-    udev
+    udev \
+    lsof
 
 RUN set -exu \
   && groupadd --gid 1000 builder \
