@@ -48,11 +48,14 @@ RUN set -exu \
     parted \
     bc \
     lz4 \
-    bash
+    bash \
+    sudo
 
 RUN set -exu \
   && groupadd --gid 1000 builder \
-  && useradd --uid 1000 --gid builder --shell /bin/bash builder
+  && useradd --uid 1000 --gid builder --shell /bin/bash builder \
+  && usermod -a -G sudo builder \
+  && echo 'builder ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER builder
 
