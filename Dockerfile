@@ -50,7 +50,10 @@ RUN set -exu \
     bc \
     lz4 \
     bash \
-    sudo
+    sudo \
+    iproute2 \
+    dnsutils \
+    udev
 
 RUN set -exu \
   && groupadd --gid 1000 builder \
