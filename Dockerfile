@@ -50,6 +50,12 @@ RUN set -exu \
     lz4 \
     bash
 
+RUN set -exu \
+  && groupadd --gid 1000 builder \
+  && useradd --uid 1000 --gid builder --shell /bin/bash builder
+
+USER builder
+
 WORKDIR /opt/workdir
 
 CMD /bin/bash
