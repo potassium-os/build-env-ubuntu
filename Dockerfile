@@ -9,6 +9,7 @@ RUN set -exu \
   && apt-get -yq update \
   && apt-get -yq install \
     debootstrap \
+    binfmt-support \
     rsync \
     wget \
     git \
