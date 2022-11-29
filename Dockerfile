@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM docker.io/ubuntu:kinetic
+FROM docker.io/ubuntu:kinetic-20221101
 
 USER root
 
