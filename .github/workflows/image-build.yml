@@ -3,8 +3,9 @@ name: Docker Image CI
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    # Pattern matched against refs/tags
+    tags:        
+      - '**'           # Push events to every tag including hierarchical tags like v1.0/beta
   workflow_dispatch:
 
 env:
@@ -37,5 +38,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} , ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} , ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest , ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
